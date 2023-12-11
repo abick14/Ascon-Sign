@@ -9,9 +9,9 @@ using Org.BouncyCastle.Crypto.Utilities;
 using Org.BouncyCastle.Utilities;
 
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
-    internal abstract class SphincsPlusEngine
+    internal abstract class AsconSignEngine
     {
         internal bool robust;
 
@@ -31,7 +31,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
 
         internal uint T; // T = 1 << A
 
-        internal SphincsPlusEngine(bool robust, int n, uint w, uint d, int a, int k, uint h)
+        internal AsconSignEngine(bool robust, int n, uint w, uint d, int a, int k, uint h)
         {
             this.N = n;
 
@@ -113,14 +113,14 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
         public abstract void T_l(byte[] pkSeed, Adrs adrs, byte[] m, byte[] output);
 #endif
 
-        public abstract void PRF(byte[] pkSeed, byte[] skSeed, Adrs adrs, byte[] prf, int prfOff);
+        public abstract void PRF(byte[] skSeed, Adrs adrs, byte[] prf, int prfOff);
 
         public abstract byte[] PRF_msg(byte[] prf, byte[] randomiser, byte[] message);
 
         
 
 
-        internal class AsconSignEngine : SphincsPlusEngine
+        internal class AsconSignEngine : AsconSignEngine
         {
             private AsconDigest treeDigest;
             private AsconDigest maskDigest;
