@@ -8,7 +8,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
     {
         private readonly AsconSignParameters m_parameters;
 
-        public AsconSignsKeyGenerationParameters(SecureRandom random, AsconSignParameters parameters)
+        public AsconSignKeyGenerationParameters(SecureRandom random, AsconSignParameters parameters)
             : base(random, 256)
         {
             m_parameters = parameters;
