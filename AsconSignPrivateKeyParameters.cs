@@ -21,7 +21,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
             m_pk = new PK(Arrays.CopyOfRange(skpkEncoded, 2 * n, 3 * n), Arrays.CopyOfRange(skpkEncoded, 3 * n, 4 * n));
         }
 
-        public AsconSignPrivateKeyParameters(SphincsPlusParameters parameters, byte[] skSeed, byte[] prf,
+        public AsconSignPrivateKeyParameters(AsconSignParameters parameters, byte[] skSeed, byte[] prf,
             byte[] pkSeed, byte[] pkRoot)
             : base(true, parameters)
         {
