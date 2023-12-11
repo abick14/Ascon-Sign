@@ -1,4 +1,4 @@
-﻿namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+﻿namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
     internal class IndexedDigest
     {
