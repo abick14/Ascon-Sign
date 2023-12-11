@@ -3,14 +3,14 @@
 using Org.BouncyCastle.Crypto.Utilities;
 using Org.BouncyCastle.Utilities;
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
     internal class WotsPlus
     {
-        private SphincsPlusEngine engine;
+        private AsconSignEngine engine;
         private uint w;
 
-        internal WotsPlus(SphincsPlusEngine engine)
+        internal WotsPlus(AsconSignEngine engine)
         {
             this.engine = engine;
             this.w = this.engine.WOTS_W;
