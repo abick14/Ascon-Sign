@@ -5,30 +5,21 @@ using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Utilities;
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
-    /**
-     * SPHINCS+ signer.
-     * <p>
-     *     This version is based on the 3rd submission with deference to the updated reference
-     *     implementation on github as at November 9th 2021. This version includes the changes
-     *     for the countermeasure for the long-message second preimage attack - see
-     *     "https://github.com/sphincs/sphincsplus/commit/61cd2695c6f984b4f4d6ed675378ed9a486cbede"
-     *     for further details.
-     * </p>
-     */
-    public sealed class SphincsPlusSigner
+
+    public sealed class AsconSignSigner
         : IMessageSigner
     {
-        private SphincsPlusPrivateKeyParameters m_privKey;
-        private SphincsPlusPublicKeyParameters m_pubKey;
+        private AsconSignPrivateKeyParameters m_privKey;
+        private AsconSignPublicKeyParameters m_pubKey;
 
         private SecureRandom m_random;
 
         /**
          * Base constructor.
          */
-        public SphincsPlusSigner()
+        public AsconSignSigner()
         {
         }
 
@@ -39,18 +30,18 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
                 m_pubKey = null;
                 if (param is ParametersWithRandom withRandom)
                 {
-                    m_privKey = (SphincsPlusPrivateKeyParameters)withRandom.Parameters;
+                    m_privKey = (AsconSignPrivateKeyParameters)withRandom.Parameters;
                     m_random = withRandom.Random;
                 }
                 else
                 {
-                    m_privKey = (SphincsPlusPrivateKeyParameters)param;
+                    m_privKey = (AsconSignPrivateKeyParameters)param;
                     m_random = null;
                 }
             }
             else
             {
-                m_pubKey = (SphincsPlusPublicKeyParameters)param;
+                m_pubKey = (AsconSignPublicKeyParameters)param;
                 m_privKey = null;
                 m_random = null;
             }
@@ -59,10 +50,10 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
         public byte[] GenerateSignature(byte[] message)
         {
             // # Input: Message M, private key SK = (SK.seed, SK.prf, PK.seed, PK.root)
-            // # Output: SPHINCS+ signature SIG
+            // # Output: AsconSign signature SIG
             // init
 
-            SphincsPlusEngine engine = m_privKey.Parameters.GetEngine();
+            AsconSignEngine engine = m_privKey.Parameters.GetEngine();
             engine.Init(m_privKey.GetPublicSeed());
             // generate randomizer
             byte[] optRand = new byte[engine.N];
@@ -121,7 +112,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
             //# Output: bool
 
             // init
-            SphincsPlusEngine engine = m_pubKey.Parameters.GetEngine();
+            AsconSignEngine engine = m_pubKey.Parameters.GetEngine();
             engine.Init(m_pubKey.GetSeed());
 
             Adrs adrs = new Adrs();
