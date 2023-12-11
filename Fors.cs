@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 using Org.BouncyCastle.Utilities;
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
     internal class Fors
     {
-        private readonly SphincsPlusEngine engine;
+        private readonly AsconSignEngine engine;
 
-        internal Fors(SphincsPlusEngine engine)
+        internal Fors(AsconSignEngine engine)
         {
             this.engine = engine;
         }
