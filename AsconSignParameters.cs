@@ -22,20 +22,20 @@ namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
         public static readonly AsconSignParameters ascon_128s = new AsconSignParameters(
            0x010101, "ascon-128s-robust", new AsconEngineProvider(true, 16, 16, 7, 12, 14, 63));
         public static readonly AsconSignParameters ascon_128f = new AsconSignParameters(
-           0x010102, "ason-128f-robust", new AsconEngineProvider(true, 16, 16, 22, 6, 33, 66));
+           0x010102, "ascon-128f-robust", new AsconEngineProvider(true, 16, 16, 22, 6, 33, 66));
         public static readonly AsconSignParameters ascon_192s = new AsconSignParameters(
            0x010103, "ascon-192s-robust", new AsconEngineProvider(true, 24, 16, 7, 12, 14, 63));
         public static readonly AsconSignParameters ascon_192f = new AsconSignParameters(
            0x010104, "ascon-192f-robust", new AsconEngineProvider(true, 246, 16, 22, 8, 33, 66));
 
         public static readonly AsconSignParameters ascon_128s_simple = new AsconSignParameters(
-           0x010101, "ascon-128s-robust", new AsconEngineProvider(false, 16, 16, 7, 12, 14, 63));
+           0x010101, "ascon-128s-simple", new AsconEngineProvider(false, 16, 16, 7, 12, 14, 63));
         public static readonly AsconSignParameters ascon_128f_simple = new AsconSignParameters(
-           0x010102, "ascon-128f-robust", new AsconEngineProvider(false, 16, 16, 22, 6, 33, 66));
+           0x010102, "ascon-128f-simple", new AsconEngineProvider(false, 16, 16, 22, 6, 33, 66));
         public static readonly AsconSignParameters ascon_192s_simple = new AsconSignParameters(
-           0x010103, "ascon-192s-robust", new AsconEngineProvider(false, 24, 16, 7, 12, 14, 63));
+           0x010103, "ascon-192s-simple", new AsconEngineProvider(false, 24, 16, 7, 12, 14, 63));
         public static readonly AsconSignParameters ascon_192f_simple = new AsconSignParameters(
-           0x010104, "ascon-192f-robust", new AsconEngineProvider(false, 246, 16, 22, 8, 33, 66));
+           0x010104, "ascon-192f-simple", new AsconEngineProvider(false, 246, 16, 22, 8, 33, 66));
 
         private static readonly Dictionary<int, AsconSignParameters> IdToParams =
            new Dictionary<int, AsconSignParameters>();
