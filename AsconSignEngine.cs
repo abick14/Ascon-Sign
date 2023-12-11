@@ -114,7 +114,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
         public abstract void T_l(byte[] pkSeed, Adrs adrs, byte[] m, byte[] output);
 #endif
 
-        public abstract void PRF(byte[] skSeed, Adrs adrs, byte[] prf, int prfOff);
+        public abstract void PRF(byte[] pkSeed, byte[] skSeed, Adrs adrs, byte[] prf, int prfOff);
 
         public abstract byte[] PRF_msg(byte[] prf, byte[] randomiser, byte[] message);
 
@@ -204,7 +204,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
                 throw new NotImplementedException();
             }
 
-            public override void PRF(byte[] skSeed, Adrs adrs, byte[] prf, int prfOff)
+            public override void PRF(byte[] pkSeed, byte[] skSeed, Adrs adrs, byte[] prf, int prfOff)
             {
 
                 //I removed the pkseed input since it doesn't seem to need it from the papers
