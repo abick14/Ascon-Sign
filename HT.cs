@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 using Org.BouncyCastle.Utilities;
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
     internal class HT
     {
         private byte[] skSeed;
         private byte[] pkSeed;
-        SphincsPlusEngine engine;
+        AsconSignEngine engine;
         WotsPlus wots;
 
         internal byte[] HTPubKey;
 
-        internal HT(SphincsPlusEngine engine, byte[] skSeed, byte[] pkSeed)
+        internal HT(AsconSignEngine engine, byte[] skSeed, byte[] pkSeed)
         {
             this.skSeed = skSeed;
             this.pkSeed = pkSeed;
