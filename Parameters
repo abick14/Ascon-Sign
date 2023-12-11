@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using Org.BouncyCastle.Crypto.Utilities;
 using Org.BouncyCastle.Utilities.Collections;
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
-    internal interface ISphincsPlusEngineProvider
+    internal interface IAsconSignEngineProvider
     {
         int N { get; }
 
-        SphincsPlusEngine Get();
+        AsconSignEngine Get();
     }
 
 
@@ -30,7 +30,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
         public static readonly AsconSignParameters ascon_128s_simple = new AsconSignParameters(
            0x010101, "ascon-128s-robust", new AsconEngineProvider(false, 16, 16, 7, 12, 14, 63));
         public static readonly AsconSignParameters ascon_128f_simple = new AsconSignParameters(
-           0x010102, "ason-128f-robust", new AsconEngineProvider(false, 16, 16, 22, 6, 33, 66));
+           0x010102, "ascon-128f-robust", new AsconEngineProvider(false, 16, 16, 22, 6, 33, 66));
         public static readonly AsconSignParameters ascon_192s_simple = new AsconSignParameters(
            0x010103, "ascon-192s-robust", new AsconEngineProvider(false, 24, 16, 7, 12, 14, 63));
         public static readonly AsconSignParameters ascon_192f_simple = new AsconSignParameters(
@@ -57,9 +57,9 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
 
         private readonly int m_id;
         private readonly string m_name;
-        private readonly ISphincsPlusEngineProvider m_engineProvider;
+        private readonly IAsconSignEngineProvider m_engineProvider;
 
-        private AsconSignParameters(int id, string name, ISphincsPlusEngineProvider engineProvider)
+        private AsconSignParameters(int id, string name, IAsconSignEngineProvider engineProvider)
         {
             m_id = id;
             m_name = name;
@@ -72,7 +72,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
 
         internal int N => m_engineProvider.N;
 
-        internal SphincsPlusEngine GetEngine() => m_engineProvider.Get();
+        internal AsconSignEngine GetEngine() => m_engineProvider.Get();
 
         /**
          * Return the SPHINCS+ parameters that map to the passed in parameter ID.
@@ -95,7 +95,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
     }
 
     internal sealed class AsconEngineProvider
-        : ISphincsPlusEngineProvider
+        : IAsconSignEngineProvider
     {
         private readonly bool robust;
         private readonly int n;
@@ -118,8 +118,8 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
 
         public int N => this.n;
 
-        public SphincsPlusEngine Get()
+        public AsconSignEngine Get()
         {
-            return new SphincsPlusEngine.AsconSignEngine(robust, n, w, d, a, k, h);
+            return new AsconSignEngine.AsconSignEngine(robust, n, w, d, a, k, h);
         }
     }
