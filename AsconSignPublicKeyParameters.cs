@@ -2,14 +2,14 @@
 
 using Org.BouncyCastle.Utilities;
 
-namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
+namespace Org.BouncyCastle.Pqc.Crypto.AsconSign
 {
-    public sealed class SphincsPlusPublicKeyParameters
-        : SphincsPlusKeyParameters
+    public sealed class AsconSignPublicKeyParameters
+        : AsconSignKeyParameters
     {
         private readonly PK m_pk;
 
-        public SphincsPlusPublicKeyParameters(SphincsPlusParameters parameters, byte[] pkEncoded)
+        public AsconSignPublicKeyParameters(AsconSignParameters parameters, byte[] pkEncoded)
             : base(false, parameters)
         {
             int n = parameters.N;
@@ -19,7 +19,7 @@ namespace Org.BouncyCastle.Pqc.Crypto.SphincsPlus
             m_pk = new PK(Arrays.CopyOfRange(pkEncoded, 0, n), Arrays.CopyOfRange(pkEncoded, n, 2 * n));
         }
 
-        internal SphincsPlusPublicKeyParameters(SphincsPlusParameters parameters, PK pk)
+        internal AsconSignPublicKeyParameters(AsconSignParameters parameters, PK pk)
             : base(false, parameters)
         {
             m_pk = pk;
